@@ -67,7 +67,37 @@ class Autocomplete {
     this.list.innerHTML = html.join('');
   }
 
-  getMatches( text ) {
+getMatches( text ) {
+
+//   this.input.addEventListener('change', () => {
+//     if (this.input.options[this.input.selectedIndex].text.includes(text)) {
+//         return [{
+//             text: this.input.options[this.input.selectedIndex].text,
+//             value: this.input.selectedIndex
+//         }];
+//     }
+// })
+let inputArry = [];
+  for(let i = 0; i < this.input.options.length; i++){
+    inputArry.push(this.input.options[i].text)
+  }
+
+
+  inputArry.forEach((element) => {
+    if (element.includes(text)) {
+      return inputArry.reduce((acc, prev) => {
+        const obj = {
+          text: prev.text,
+          value: prev.value,
+        };
+        acc.push(obj);
+        return acc;
+      }, []);
+    }
+
+})
+
+
     /*
       TODO: этот метод нужно дописать
       text - фраза, которую вводят в поле поиска
@@ -80,13 +110,14 @@ class Autocomplete {
         text: 'Содержимое <option>',
         value: 'Содержимое атрибута value'
       }
-    */
+    
     return [
       {
         text: 'Чубакка',
         value: '1'
       }
     ];
+    */
   }
 }
 
