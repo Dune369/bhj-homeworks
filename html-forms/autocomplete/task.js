@@ -69,55 +69,19 @@ class Autocomplete {
 
 getMatches( text ) {
 
-//   this.input.addEventListener('change', () => {
-//     if (this.input.options[this.input.selectedIndex].text.includes(text)) {
-//         return [{
-//             text: this.input.options[this.input.selectedIndex].text,
-//             value: this.input.selectedIndex
-//         }];
-//     }
-// })
-let inputArry = [];
-  for(let i = 0; i < this.input.options.length; i++){
-    inputArry.push(this.input.options[i].text)
-  }
+
+  const optionElements = [...this.input.options];
+  const filterArray = optionElements.filter((el) => el.text.includes(text));
+  return filterArray.reduce((acc, prev) => {
+    const obj = {
+      text: prev.text,
+      value: prev.value,
+    };
+    acc.push(obj);
+    return acc;
+  }, []);
 
 
-  inputArry.forEach((element) => {
-    if (element.includes(text)) {
-      return inputArry.reduce((acc, prev) => {
-        const obj = {
-          text: prev.text,
-          value: prev.value,
-        };
-        acc.push(obj);
-        return acc;
-      }, []);
-    }
-
-})
-
-
-    /*
-      TODO: этот метод нужно дописать
-      text - фраза, которую вводят в поле поиска
-      Метод должен вернуть массив.
-
-      Он формируется на основе списка опций select-элемента (this.input)
-      Подходящие опции - те, чей текст содержит то, что есть в аргументе text
-      Необходимо вернуть массив объектов со свойствами:
-      {
-        text: 'Содержимое <option>',
-        value: 'Содержимое атрибута value'
-      }
-    
-    return [
-      {
-        text: 'Чубакка',
-        value: '1'
-      }
-    ];
-    */
   }
 }
 
