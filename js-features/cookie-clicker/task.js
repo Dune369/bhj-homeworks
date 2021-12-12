@@ -1,5 +1,4 @@
 "use strict"
-
 let clickerCounter = document.getElementById("clicker__counter"); // счетчик
 let cookie = document.getElementById("cookie"); // картинка
 
