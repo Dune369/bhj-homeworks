@@ -1,11 +1,9 @@
 "use strict"
-
 // Убито кротов
 let dead = document.getElementById("dead")
 
 // Промах
 let lost = document.getElementById("lost")
-
 
 for (let i = 1; i < 10; i++) {
     function getHole(index) {   
